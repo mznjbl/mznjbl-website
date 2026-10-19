@@ -15,10 +15,5 @@
       "database_id": "832fab71-19de-4347-9a07-037fefb9e895"
     }
   ],
-  "main": "src/index.js",
-  "triggers": {
-    "crons": [
-      "0 * * * *"
-    ]
-  }
+  "main": "src/index.js"
 }

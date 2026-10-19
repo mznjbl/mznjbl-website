@@ -47,12 +47,13 @@
   status.textContent='SENDING YOUR INQUIRY...';
   try {
    const data=Object.fromEntries(new FormData(form).entries());
-   const response=await fetch(config.formEndpoint,{
+   data.website=data._honey || '';
+   const response=await fetch('/api/contact',{
     method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
     body:JSON.stringify(data)
    });
    const result=await response.json();
-   if(!response.ok || result.success===false || result.success==='false') throw new Error('FormSubmit rejected this submission');
+   if(!response.ok || result.success===false || result.success==='false') throw new Error('Contact API rejected this submission');
    form.reset();
    status.textContent="MESSAGE TRANSMITTED. We'll get back to you soon, human. If you don't hear from us, feel free to reach out via WhatsApp.";
    status.style.color='#28502c';
