@@ -84,3 +84,69 @@ img, svg, video, canvas {max-width:100%;}
 
 /* MZNJBL vector icon compatibility */
 .ui-arrow{width:1em;height:1em;display:inline-block;vertical-align:-.12em;flex:0 0 auto;stroke:currentColor;fill:none;overflow:visible}.menu-overlay>a .ui-arrow{font-size:.5em}.button .ui-arrow{font-size:1.65em}.text-link .ui-arrow{margin-left:.25em}.circle-arrow .ui-arrow{font-size:1em}
+
+/* Keep the main landing-page headline visible */
+.hero-copy .hero-title,
+.hero-copy .supra {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+
+/* MZNJBL / Interactive Lab: controls above live render */
+.lab-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(32px, 4vw, 60px);
+  align-items: start;
+}
+
+.lab-layout > * {
+  min-width: 0;
+}
+
+/* Keep the controls comfortably sized */
+.lab-layout .controls {
+  max-width: 100%;
+}
+
+/* Full-width website preview */
+.lab-layout .forge-display {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+  padding: clamp(12px, 2vw, 28px);
+}
+
+.lab-layout .forge-preview {
+  width: 100%;
+  min-height: clamp(400px, 48vw, 700px);
+  padding: clamp(20px, 3vw, 50px);
+}
+
+/* Fluid typography based on preview width */
+.lab-layout .forge-center h3 {
+  font-size: clamp(42px, 6vw, 110px);
+  max-width: 100%;
+}
+
+/* Compact mobile presentation */
+@media (max-width: 600px) {
+  .lab-layout {
+    gap: 28px;
+  }
+
+  .lab-layout .forge-display {
+    padding: 12px;
+  }
+
+  .lab-layout .forge-preview {
+    min-height: 370px;
+    padding: 16px;
+  }
+
+  .lab-layout .forge-center h3 {
+    font-size: clamp(36px, 10vw, 64px);
+  }
+}

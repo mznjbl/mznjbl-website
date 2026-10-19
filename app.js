@@ -54,7 +54,7 @@
    const result=await response.json();
    if(!response.ok || result.success===false || result.success==='false') throw new Error('FormSubmit rejected this submission');
    form.reset();
-   status.textContent='INQUIRY SUBMITTED TO OUR FORM SERVICE. Email delivery requires the studio inbox to be activated; if you do not receive a reply, use the email or WhatsApp link.';
+   status.textContent="MESSAGE TRANSMITTED. We'll get back to you soon, human. If you don't hear from us, feel free to reach out via WhatsApp.";
    status.style.color='#28502c';
   } catch(err) {
    status.textContent='SUBMISSION NOT CONFIRMED. Please use the direct email or WhatsApp link instead.';
