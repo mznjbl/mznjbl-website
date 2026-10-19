@@ -85,12 +85,6 @@ img, svg, video, canvas {max-width:100%;}
 /* MZNJBL vector icon compatibility */
 .ui-arrow{width:1em;height:1em;display:inline-block;vertical-align:-.12em;flex:0 0 auto;stroke:currentColor;fill:none;overflow:visible}.menu-overlay>a .ui-arrow{font-size:.5em}.button .ui-arrow{font-size:1.65em}.text-link .ui-arrow{margin-left:.25em}.circle-arrow .ui-arrow{font-size:1em}
 
-/* Keep the main landing-page headline visible */
-.hero-copy .hero-title,
-.hero-copy .supra {
-  opacity: 1 !important;
-  transform: none !important;
-}
 
 
 /* MZNJBL / Interactive Lab: controls above live render */
@@ -148,5 +142,40 @@ img, svg, video, canvas {max-width:100%;}
 
   .lab-layout .forge-center h3 {
     font-size: clamp(36px, 10vw, 64px);
+  }
+}
+
+/* MZNJBL / Hero headline entrance animation */
+.hero-copy .supra.reveal,
+.hero-copy .hero-title.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.hero-copy .supra.reveal {
+  animation: mznHeroEntrance .75s ease-out both;
+}
+
+.hero-copy .hero-title.reveal {
+  animation: mznHeroEntrance 1s cubic-bezier(.2,.75,.2,1) .15s both;
+}
+
+@keyframes mznHeroEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(45px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy .supra.reveal,
+  .hero-copy .hero-title.reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }

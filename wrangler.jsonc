@@ -1,0 +1,8 @@
+{
+  "name": "mzn",
+  "account_id": "4a40388160fbf4e597ae133cf6a0d5f0",
+  "compatibility_date": "2026-10-19",
+  "assets": {
+    "directory": "./dist"
+  }
+}
