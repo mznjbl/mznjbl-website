@@ -47,6 +47,8 @@
   status.textContent='SENDING YOUR INQUIRY...';
   try {
    const data=Object.fromEntries(new FormData(form).entries());
+   data.project_type=data.projectType;
+   delete data.projectType;
    data.website=data._honey || '';
    const response=await fetch('/api/contact',{
     method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
