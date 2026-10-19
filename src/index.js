@@ -176,7 +176,7 @@ export default {
         message
       };
 
-      // Email notifications disabled; D1 stores the inquiry.
+      ctx.waitUntil(sendNotification(env, inquiry));
 
       return json({ success: true });
 
