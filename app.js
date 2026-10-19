@@ -8,7 +8,7 @@
  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
  document.documentElement.dataset.jublVersion='2.0.0';
- if(document.body.dataset.page==='home'){const indicator=document.createElement('div');indicator.className='build-indicator';indicator.textContent='MZNJBL/ BUILD 1.5 · JS ACTIVE'+(reduced?' · REDUCED MOTION':'');indicator.setAttribute('aria-label','Website build status');document.body.appendChild(indicator);}
+ 
  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
  const glow=document.querySelector('.cursor-glow');if(glow&&!reduced&&matchMedia('(pointer:fine)').matches){window.addEventListener('pointermove',e=>{glow.style.opacity='1';glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';},{passive:true});}
  if(document.body.dataset.page==='home'){

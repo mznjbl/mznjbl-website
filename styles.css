@@ -58,3 +58,26 @@
 .forge-actions #launchForge{background:var(--acid);color:#111;border-color:var(--acid)}
 .build-indicator{opacity:.7}
 @media(prefers-reduced-motion:reduce){.hero-art,.orb-one,.orb-two{animation:none!important}.forge-preview,.forge-preview *{transition:none!important}.forge-preview.is-launching .forge-scan{animation:none!important;visibility:hidden}.forge-preview.is-launching .forge-center h3,.forge-preview.preview-flash .forge-center h3{animation:none!important}}
+
+/* MZNJBL/ mobile viewport and typography fixes */
+html, body {max-width:100%;}
+img, svg, video, canvas {max-width:100%;}
+.footer-logo {display:block; max-width:100%; width:max-content; font-size:clamp(2.5rem,15vw,12rem); letter-spacing:-.09em; overflow-wrap:anywhere;}
+.marquee-track {font-family:var(--font-head);}
+.asterisk {font-family:var(--font-head);font-weight:700;}
+@media (max-width:600px) {
+  .footer-logo {font-size:clamp(2.4rem,15vw,5.9rem);letter-spacing:-.09em;}
+  .hero-title {font-size:clamp(2.8rem,12.3vw,5.5rem);overflow-wrap:normal;}
+  .hero-bottom .button {max-width:100%;white-space:normal;}
+  .section-meta, .hero-foot, .footer-last {min-width:0;}
+  .section-meta > *, .hero-foot > * {min-width:0; overflow-wrap:anywhere;}
+  .display-title {font-size:clamp(2.2rem,9.1vw,4.3rem);overflow-wrap:break-word;}
+  .vacancy h3 {font-size:clamp(2.3rem,10.5vw,3.3rem);overflow-wrap:break-word;}
+  .tile-wordmark {font-size:clamp(3rem,16vw,6rem);}
+  .manifesto-lower {align-items:flex-start;}
+  .asterisk {font-size:3.6rem; flex-shrink:0;}
+  .manifesto-lower p {min-width:0;}
+  .contact-links a {overflow-wrap:anywhere;max-width:100%;}
+  .menu-overlay>a {font-size:clamp(2.1rem,10vw,4rem);}
+  .case-visual {font-size:clamp(2.4rem,14vw,7rem);overflow-wrap:anywhere;}
+}
