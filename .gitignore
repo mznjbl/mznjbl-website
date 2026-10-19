@@ -6,3 +6,8 @@ node_modules/
 *.log
 
 dist/
+
+.wrangler/
+styles.css.backup-before-responsive-fix
+
+.dev.vars

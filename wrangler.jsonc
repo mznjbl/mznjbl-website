@@ -3,6 +3,22 @@
   "account_id": "4a40388160fbf4e597ae133cf6a0d5f0",
   "compatibility_date": "2026-10-19",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "mzn-inquiries",
+      "database_id": "832fab71-19de-4347-9a07-037fefb9e895"
+    }
+  ],
+  "main": "src/index.js",
+  "triggers": {
+    "crons": [
+      "0 * * * *"
+    ]
   }
 }
