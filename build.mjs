@@ -13,6 +13,7 @@ const files = [
   'styles.css',
   'app.js',
   'assets',
+  'supply.html',
   'projects'
 ];
 

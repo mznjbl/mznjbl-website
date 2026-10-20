@@ -98,6 +98,50 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
+    if (url.pathname === "/api/waitlist") {
+      if (request.method !== "POST")
+        return json({ error: "Method not allowed" }, 405);
+
+      const origin = request.headers.get("Origin");
+      if (origin && origin !== url.origin)
+        return json({ error: "Invalid origin" }, 403);
+
+      try {
+        if (!request.headers.get("Content-Type")?.includes("application/json"))
+          return json({ error: "JSON required" }, 415);
+
+        const raw = await request.text();
+        if (raw.length > 2048)
+          return json({ error: "Too large" }, 413);
+
+        const data = JSON.parse(raw);
+        if (!data || typeof data !== "object" || Array.isArray(data))
+          return json({ error: "Invalid request" }, 400);
+
+        if (data.website) return json({ success: true });
+
+        const email = typeof data.email === "string"
+          ? data.email.trim().toLowerCase() : "";
+
+        if (email.length > 254 ||
+            !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email))
+          return json({ error: "Invalid email" }, 400);
+
+        if (!(await checkRateLimit(request, env)))
+          return json({ error: "Too many requests" }, 429);
+
+        await env.DB.prepare(
+          "INSERT OR IGNORE INTO supply_waitlist (email) VALUES (?)"
+        ).bind(email).run();
+
+        return json({ success: true });
+      } catch (error) {
+        console.error("Waitlist error:", error);
+        return json({ error: "Registration unavailable" }, 500);
+      }
+    }
+
+
     if (url.pathname !== "/api/contact") {
       return json({ error: "Not found." }, 404);
     }
