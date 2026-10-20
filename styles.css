@@ -443,3 +443,197 @@ img, svg, video, canvas {max-width:100%;}
     min-width: 0;
   }
 }
+
+/* MZNJBL / Navigation logo contrast fix */
+body.menu-open .header .wordmark,
+body.menu-open .header .wordmark span {
+  color: #0B0D0C !important;
+}
+
+/* MZNJBL / Navigation header contrast fix */
+body.menu-open .header .wordmark,
+body.menu-open .header .wordmark span,
+body.menu-open .header .menu-button {
+  color: #0B0D0C !important;
+}
+
+body.menu-open .header .menu-icon i {
+  background: #0B0D0C !important;
+}
+
+/* MZNJBL / Mobile navigation layout correction */
+@media (max-width: 600px) {
+  .menu-overlay {
+    padding: 90px 6vw 25px;
+    overflow-y: auto;
+  }
+
+  .menu-overlay > a {
+    font-size: clamp(38px, 10vw, 58px);
+    letter-spacing: -.065em;
+    padding: 22px 0;
+    min-height: 95px;
+    flex-shrink: 0;
+  }
+
+  .menu-overlay > a small {
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-right: 15px;
+    letter-spacing: 0;
+  }
+
+  .menu-overlay > a span {
+    font-size: .55em;
+    flex-shrink: 0;
+  }
+
+  .menu-overlay .menu-top,
+  .menu-overlay .menu-bottom {
+    font-size: 10px;
+  }
+}
+
+/* MZNJBL / Mobile navigation: structured layout */
+@media (max-width: 600px) {
+  .menu-overlay {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .menu-overlay > a {
+    display: grid !important;
+    grid-template-columns: 30px minmax(0, 1fr) 24px;
+    align-items: center;
+    column-gap: 12px;
+    width: 100%;
+    min-width: 0;
+    min-height: 90px;
+    padding: 18px 0;
+    font-size: clamp(26px, 7.5vw, 40px) !important;
+    line-height: 1;
+    letter-spacing: -.06em;
+    text-align: left;
+  }
+
+  .menu-overlay > a small {
+    font: 10px/1 var(--font-mono);
+    margin: 0;
+    min-width: 0;
+  }
+
+  .menu-overlay > a span {
+    font-size: 22px;
+    justify-self: end;
+    min-width: 0;
+  }
+
+  .menu-overlay > a .ui-arrow {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Fix mobile navigation numbering */
+@media (max-width: 600px) {
+  .menu-overlay > a small {
+    display: inline-block !important;
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.4 !important;
+    white-space: nowrap !important;
+    font-variant-numeric: tabular-nums;
+    transform: none !important;
+    width: 30px;
+  }
+}
+
+/* MZNJBL / Explicit mobile navigation columns */
+@media (max-width: 600px) {
+  .menu-overlay > a {
+    display: grid !important;
+    grid-template-columns: 32px minmax(0, 1fr) 28px;
+    gap: 14px;
+    align-items: center;
+    padding: 18px 0;
+    min-height: 85px;
+  }
+
+  .menu-overlay > a .menu-number {
+    display: block;
+    font: 400 12px/1.5 monospace !important;
+    letter-spacing: 1px !important;
+    width: auto !important;
+    transform: none !important;
+    white-space: nowrap;
+  }
+
+  .menu-overlay > a .menu-title {
+    display: block;
+    font: 400 clamp(28px, 8vw, 46px)/1 var(--font-head);
+    letter-spacing: -.06em;
+    min-width: 0;
+    overflow-wrap: normal;
+  }
+
+  .menu-overlay > a .menu-arrow {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 22px;
+  }
+}
+
+/* MZNJBL / Unified navigation layout */
+.menu-overlay > a {
+  display: grid !important;
+  grid-template-columns: 56px minmax(0, 1fr) 48px !important;
+  align-items: center;
+  justify-content: initial;
+  column-gap: clamp(16px, 2vw, 32px);
+  width: 100%;
+  min-width: 0;
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  line-height: 1;
+}
+
+.menu-overlay > a .menu-number {
+  display: block;
+  width: auto;
+  font: 400 12px/1.4 var(--font-mono) !important;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.menu-overlay > a .menu-title {
+  display: block;
+  color: inherit;
+  font-family: var(--font-head);
+  font-size: inherit;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: -.065em;
+  min-width: 0;
+}
+
+.menu-overlay > a .menu-arrow {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 28px;
+}
+
+@media (max-width: 600px) {
+  .menu-overlay > a {
+    grid-template-columns: 32px minmax(0, 1fr) 28px !important;
+    column-gap: 14px;
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+  }
+
+  .menu-overlay > a .menu-arrow {
+    font-size: 22px;
+  }
+}
