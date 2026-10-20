@@ -269,3 +269,177 @@ img, svg, video, canvas {max-width:100%;}
 .studio-syslog > div {
   margin-bottom: 5px;
 }
+
+/* MZNJBL / Industrial contact form panel */
+.contact-form {
+  position: relative;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 40px) 0,
+    100% 40px,
+    100% 100%,
+    40px 100%,
+    0 calc(100% - 40px)
+  );
+}
+
+@media (max-width: 600px) {
+  .contact-form {
+    clip-path: polygon(
+      0 0,
+      calc(100% - 24px) 0,
+      100% 24px,
+      100% 100%,
+      24px 100%,
+      0 calc(100% - 24px)
+    );
+  }
+}
+
+/* MZNJBL / Interactive Lab edge-label spacing */
+.lab-display-top,
+.lab-display-bottom {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.lab-display-top span,
+.lab-display-bottom span {
+  position: static;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .lab-display-top,
+  .lab-display-bottom {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .lab-display-top span,
+  .lab-display-bottom span {
+    font-size: 9px;
+  }
+}
+
+/* MZNJBL / Fix Interactive Lab edge labels */
+.lab-display {
+  position: relative;
+}
+
+.lab-display-top,
+.lab-display-bottom {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  width: auto;
+  z-index: 5;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.lab-display-top {
+  top: 18px;
+}
+
+.lab-display-bottom {
+  bottom: 18px;
+}
+
+.lab-display-top span,
+.lab-display-bottom span {
+  position: static;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .lab-display-top,
+  .lab-display-bottom {
+    left: 12px;
+    right: 12px;
+  }
+
+  .lab-display-top {
+    top: 12px;
+  }
+
+  .lab-display-bottom {
+    bottom: 12px;
+  }
+
+  .lab-display-top span,
+  .lab-display-bottom span {
+    font-size: 9px;
+  }
+}
+
+/* MZNJBL / Inner Live Render window sizing */
+.forge-preview {
+  position: relative;
+  inset: auto;
+  width: calc(100% - 48px);
+  height: auto;
+  margin: 24px auto;
+  box-sizing: border-box;
+}
+
+/* MZNJBL / Personnel timeline — long date labels */
+
+@media (min-width: 601px) {
+  .archive-entry {
+    grid-template-columns: 245px minmax(0, 1fr);
+    gap: 30px;
+  }
+
+  .archive-entry::before {
+    left: 225px;
+  }
+
+  .archive-entry::after {
+    left: 219px;
+  }
+
+  .archive-date {
+    font-size: 20px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .archive-entry {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 15px;
+  }
+
+  .archive-entry::before {
+    left: 0;
+  }
+
+  .archive-entry::after {
+    left: -6px;
+  }
+
+  .archive-date {
+    position: relative;
+    top: auto;
+    height: auto;
+    padding-left: 22px;
+    font-size: 16px;
+    white-space: normal;
+  }
+
+  .archive-body {
+    padding-left: 22px;
+    min-width: 0;
+  }
+}
