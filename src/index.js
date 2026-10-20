@@ -124,7 +124,7 @@ export default {
           ? data.email.trim().toLowerCase() : "";
 
         if (email.length > 254 ||
-            !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email))
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
           return json({ error: "Invalid email" }, 400);
 
         if (!(await checkRateLimit(request, env)))
