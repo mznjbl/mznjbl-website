@@ -856,3 +856,16 @@ button:has(.inv-btn-title)[disabled]{
   color: #aeb5aa;
   white-space: normal;
 }
+
+
+/* Restore Safari root canvas background */
+html {
+  background-color: #0b0d0c;
+}
+
+/* TEST: Safari toolbar compositing */
+@media (max-width: 600px) {
+  .noise {
+    display: none !important;
+  }
+}
