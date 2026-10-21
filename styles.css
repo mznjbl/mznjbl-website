@@ -743,3 +743,116 @@ footer .footer-last > a {
     min-height: 68px;
   }
 }
+
+
+/* INVENTORY BUTTON REFRESH */
+.inv-btn-title{
+  display:block;
+  font:700 clamp(18px,1.45vw,24px)/1.05 var(--font-head);
+  letter-spacing:-0.02em;
+  text-transform:none;
+}
+
+.inv-btn-sub{
+  display:block;
+  margin-top:8px;
+  font:12px/1.35 var(--font-mono);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  opacity:.62;
+}
+
+button:has(.inv-btn-title){
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.18);
+  min-height:88px;
+  padding:20px 24px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  text-align:left;
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    background .18s ease;
+}
+
+button:has(.inv-btn-title):hover{
+  transform:translateY(-2px);
+  background:rgba(212,255,49,.07);
+  border-color:rgba(212,255,49,.35);
+}
+
+button:has(.inv-btn-title):focus-visible{
+  outline:none;
+  border-color:rgba(212,255,49,.7);
+  background:rgba(212,255,49,.08);
+}
+
+button:has(.inv-btn-title)[disabled]{
+  opacity:.45;
+  transform:none;
+  cursor:not-allowed;
+}
+
+@media (max-width: 700px){
+  button:has(.inv-btn-title){
+    min-height:76px;
+    padding:16px 18px;
+  }
+
+  .inv-btn-title{
+    font-size:18px;
+  }
+
+  .inv-btn-sub{
+    font-size:11px;
+  }
+}
+
+/* Process section album easter egg */
+.weeknd-easter-egg {
+  display: block;
+  margin-top: 8px;
+  color: #d7ff35;
+  font: 10px/1.6 "IBM Plex Mono", monospace;
+  letter-spacing: .04em;
+}
+
+/* Process Weeknd easter egg alignment */
+.weeknd-easter-egg {
+  display: block !important;
+  width: 100%;
+  margin-top: 8px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: .02em;
+  color: #aeb5aa;
+  text-align: right;
+  white-space: normal;
+}
+
+/* Process album reference */
+.process-reference {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  text-align: right;
+}
+
+.process-reference > span {
+  color: #d7ff35;
+}
+
+.process-reference .weeknd-easter-egg {
+  display: block;
+  margin: 0;
+  font: 10px/1.5 "IBM Plex Mono", monospace;
+  letter-spacing: .02em;
+  color: #aeb5aa;
+  white-space: normal;
+}

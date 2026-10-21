@@ -1,0 +1,134 @@
+const json = (data, status = 200) =>
+  new Response(JSON.stringify(data), {
+    status,
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "no-store"
+    }
+  });
+
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+
+    if (url.pathname !== "/api/contact") {
+      return json({ error: "Not found." }, 404);
+    }
+
+    if (request.method !== "POST") {
+      return json({ error: "Method not allowed." }, 405);
+    }
+
+    const origin = request.headers.get("Origin");
+    if (origin && origin !== url.origin) {
+      return json({ error: "Invalid origin." }, 403);
+    }
+
+    try {
+      if (!request.headers.get("Content-Type")?.includes("application/json")) {
+        return json({ error: "JSON required." }, 415);
+      }
+
+      const raw = await request.text();
+
+      if (raw.length > 10000) {
+        return json({ error: "Submission too large." }, 413);
+      }
+
+      const data = JSON.parse(raw);
+
+      if (typeof data !== "object" || data === null || Array.isArray(data)) {
+        return json({ error: "Invalid submission." }, 400);
+      }
+
+      // Honeypot: silently ignore basic automated spam.
+      if (data.website) {
+        return json({ success: true });
+      }
+
+      const name = typeof data.name === "string" ? data.name.trim() : "";
+      const email = typeof data.email === "string" ? data.email.trim() : "";
+      const project = typeof data.project_type === "string"
+        ? data.project_type.trim() : "";
+      const message = typeof data.message === "string"
+        ? data.message.trim() : "";
+
+      if (
+        name.length < 2 || name.length > 100 ||
+        email.length > 254 ||
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+        project.length < 2 || project.length > 100 ||
+        message.length < 5 || message.length > 5000
+      ) {
+        return json({ error: "Please check your form details." }, 400);
+      }
+
+      const result = await env.DB.prepare(
+        `INSERT INTO inquiries
+         (name, email, project_type, message)
+         VALUES (?, ?, ?, ?)`
+      ).bind(name, email, project, message).run();
+
+      const inquiry = {
+        id: result.meta.last_row_id,
+        name,
+        email,
+        project_type: project,
+        message
+      };
+
+      if (env.APPS_SCRIPT_URL && env.CONTACT_TOKEN) {
+        ctx.waitUntil(sendNotification(env, inquiry));
+      }
+
+      return json({ success: true });
+    } catch (error) {
+      console.error("Contact API error:", error);
+      return json({ error: "Unable to save inquiry. Please try again." }, 500);
+    }
+  }
+};
+
+
+async function sendNotification(env, inquiry) {
+  try {
+    const response = await fetch(env.APPS_SCRIPT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify({
+        ...inquiry,
+        token: env.CONTACT_TOKEN
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error("Notification service HTTP error");
+    }
+
+    const result = await response.json();
+
+    if (result.success !== true) {
+      throw new Error("Notification service rejected request");
+    }
+
+    await env.DB.prepare(
+      `UPDATE inquiries
+       SET notification_status = 'sent',
+           notification_attempts = notification_attempts + 1,
+           notified_at = CURRENT_TIMESTAMP
+       WHERE id = ?`
+    ).bind(inquiry.id).run();
+
+  } catch (error) {
+    console.error("Notification failed:", String(error));
+
+    await env.DB.prepare(
+      `UPDATE inquiries
+       SET notification_status = 'failed',
+           notification_attempts = notification_attempts + 1
+       WHERE id = ? AND notification_status != 'sent'`
+    ).bind(inquiry.id).run();
+  }
+}
