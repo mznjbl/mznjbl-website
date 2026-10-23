@@ -106,6 +106,109 @@
       .supply-description { margin-bottom: 45px; }
     }
   </style>
+
+<style>
+/* MZNJBL / Completely unnecessary navigation */
+#dead-end-cta {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  margin: 30px 0 48px;
+  align-items: center;
+  gap: 28px;
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: min(100%, 340px);
+  padding: 19px 23px;
+  margin-top: 30px;
+  border: 1px solid #d7ff35;
+  background: transparent;
+  color: #d7ff35;
+  text-decoration: none;
+  font: 600 13px/1.2 "IBM Plex Mono", monospace;
+  letter-spacing: .025em;
+  transition: background .25s ease, color .25s ease;
+}
+
+#dead-end-cta:hover,
+#dead-end-cta:focus-visible {
+  background: #d7ff35;
+  color: #0b0d0c;
+}
+
+#dead-end-cta:focus-visible {
+  outline: 2px solid #d7ff35;
+  outline-offset: 4px;
+}
+
+.dead-end-cta-copy {
+  display: grid;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.dead-end-cta-copy span {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  transition:
+    transform .35s cubic-bezier(.22, 1, .36, 1),
+    opacity .25s ease;
+}
+
+.dead-end-cta-copy span:first-child {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.dead-end-cta-copy span:last-child {
+  transform: translateY(120%);
+  opacity: 0;
+}
+
+#dead-end-cta:is(:hover, :focus-visible)
+.dead-end-cta-copy span:first-child {
+  transform: translateY(-120%);
+  opacity: 0;
+}
+
+#dead-end-cta:is(:hover, :focus-visible)
+.dead-end-cta-copy span:last-child {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.dead-end-cta-arrow {
+  font-size: 24px;
+  transition: transform .25s ease;
+}
+
+#dead-end-cta:is(:hover, :focus-visible)
+.dead-end-cta-arrow {
+  transform: translate(3px, -3px);
+}
+
+@media (max-width: 480px) {
+  #dead-end-cta {
+    min-width: 0;
+    width: 100%;
+    margin: 24px 0 40px;
+    padding: 17px 14px;
+    gap: 12px;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #dead-end-cta,
+  #dead-end-cta * {
+    transition: none;
+  }
+}
+</style>
+
 </head>
 <body>
   <main class="supply-page">
@@ -127,6 +230,18 @@
       <p class="supply-description">
         We sell some of our company-issued office supplies.
       </p>
+
+<a href="/dead-end.html"
+   id="dead-end-cta"
+   class="dead-end-cta"
+   aria-label="This is a dead end">
+  <span class="dead-end-cta-copy" aria-hidden="true">
+    <span>THIS IS A DEAD END</span>
+    <span>TRUST ME IT IS</span>
+  </span>
+  <span class="dead-end-cta-arrow" aria-hidden="true">↗</span>
+</a>
+
 
       <div class="supply-notice">
         <h2>[SYS] UNDER CONSTRUCTION.</h2>

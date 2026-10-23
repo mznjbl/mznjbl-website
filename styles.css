@@ -869,3 +869,356 @@ html {
     display: none !important;
   }
 }
+
+
+/* MZNJBL SERVICE LANDING DEMO 001 */
+#service-landing-demo {
+  margin: 32px 0 48px 12%;
+  max-width: 1000px;
+  color: #f1f2ed;
+}
+
+#service-landing-demo .sld-meta,
+#service-landing-demo .sld-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font: 11px/1.5 var(--font-mono, monospace);
+  letter-spacing: .04em;
+  color: #d7ff35;
+}
+
+#service-landing-demo .sld-meta {
+  padding: 18px 0;
+  border-top: 1px solid #444d43;
+}
+
+#service-landing-demo .sld-switch {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0 22px;
+}
+
+#service-landing-demo .sld-switch button {
+  background: transparent;
+  border: 1px solid #626b5c;
+  color: #f1f2ed;
+  padding: 12px 22px;
+  font: 11px var(--font-mono, monospace);
+}
+
+#service-landing-demo .sld-switch button[aria-pressed="true"] {
+  background: #d7ff35;
+  color: #0b0d0c;
+  border-color: #d7ff35;
+}
+
+#service-landing-demo .sld-preview {
+  min-height: 390px;
+  padding: clamp(20px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: background .25s ease, color .25s ease;
+}
+
+#service-landing-demo .sld-preview[data-mode="bold"] {
+  background: #d7ff35;
+  color: #0b0d0c;
+}
+
+#service-landing-demo .sld-preview[data-mode="editorial"] {
+  background: #f1f2ed;
+  color: #202620;
+}
+
+#service-landing-demo .sld-nav,
+#service-landing-demo .sld-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  font: 10px var(--font-mono, monospace);
+}
+
+#service-landing-demo .sld-nav strong {
+  font: 20px var(--font-head, sans-serif);
+  letter-spacing: -.06em;
+}
+
+#service-landing-demo .sld-content {
+  margin: auto 0;
+  padding: 38px 0;
+  max-width: 720px;
+}
+
+#service-landing-demo .sld-kicker {
+  font: 10px var(--font-mono, monospace);
+  letter-spacing: .06em;
+  margin-bottom: 20px;
+}
+
+#service-landing-demo h4 {
+  font: clamp(36px, 5vw, 76px)/.98 var(--font-head, sans-serif);
+  letter-spacing: -.07em;
+  margin: 0 0 20px;
+  color: inherit;
+}
+
+#service-landing-demo [data-mode="editorial"] h4 {
+  font-family: Georgia, serif;
+  font-weight: normal;
+  letter-spacing: -.045em;
+}
+
+#service-landing-demo .sld-content p {
+  color: inherit;
+  font: 15px/1.5 var(--font-body, sans-serif);
+  max-width: 420px;
+  margin: 0 0 24px;
+}
+
+#service-landing-demo .sld-cta {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  background: #0b0d0c;
+  color: #f1f2ed;
+  padding: 14px 20px;
+  border: 1px solid #0b0d0c;
+  font: bold 11px var(--font-mono, monospace);
+}
+
+#service-landing-demo .sld-preview[data-mode="editorial"] .sld-cta {
+  background: transparent;
+  color: #202620;
+  border-color: #202620;
+}
+
+#service-landing-demo .sld-bottom {
+  color: #aab3a7;
+  padding: 14px 0 0;
+}
+
+@media (max-width: 600px) {
+  #service-landing-demo {
+    margin: 25px 0 35px 0;
+  }
+
+  #service-landing-demo .sld-meta,
+  #service-landing-demo .sld-bottom {
+    font-size: 9px;
+  }
+
+  #service-landing-demo .sld-preview {
+    min-height: 350px;
+  }
+
+  #service-landing-demo .sld-nav,
+  #service-landing-demo .sld-foot {
+    font-size: 8px;
+  }
+
+  #service-landing-demo h4 {
+    font-size: clamp(33px, 9vw, 54px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #service-landing-demo .sld-preview {
+    transition: none;
+  }
+}
+
+/* Landing Pages service copy */
+#services .landing-service-copy {
+  margin-left: 12%;
+  max-width: 850px;
+  padding-bottom: 20px;
+}
+
+#services .landing-service-copy p {
+  color: #b3bab0;
+  font-size: clamp(15px, 1.5vw, 19px);
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+
+#services .landing-service-copy .landing-service-sys {
+  color: #d7ff35;
+  font: 11px/1.6 "IBM Plex Mono", monospace;
+  letter-spacing: .03em;
+  margin-top: 24px;
+}
+
+@media (max-width: 600px) {
+  #services .landing-service-copy {
+    margin-left: 15%;
+  }
+}
+
+
+/* MZNJBL STOREFRONT CTA */
+.storefront-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  width: min(100%, 410px);
+  box-sizing: border-box;
+  min-height: 72px;
+  margin-top: 56px;
+  padding: 0 24px;
+  background: #0b0d0c;
+  color: #d7ff35;
+  text-decoration: none;
+  font: 600 14px/1.2 "IBM Plex Mono", monospace;
+  overflow: hidden;
+}
+
+.storefront-cta-text {
+  display: grid;
+  grid-template-rows: 1.2em;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.storefront-cta-text > span {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  transition: transform .32s cubic-bezier(.22, 1, .36, 1),
+              opacity .25s ease;
+}
+
+.storefront-cta-text > span:first-child {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.storefront-cta-text > span:last-child {
+  transform: translateY(130%);
+  opacity: 0;
+}
+
+.storefront-cta:is(:hover, :focus-visible)
+.storefront-cta-text > span:first-child {
+  transform: translateY(-130%);
+  opacity: 0;
+}
+
+.storefront-cta:is(:hover, :focus-visible)
+.storefront-cta-text > span:last-child {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.storefront-cta-arrow {
+  font-size: 25px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform .25s ease;
+}
+
+.storefront-cta:is(:hover, :focus-visible) .storefront-cta-arrow {
+  transform: translate(3px, -3px);
+}
+
+.storefront-cta:focus-visible {
+  outline: 3px solid #0b0d0c;
+  outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  .storefront-cta {
+    width: 100%;
+    margin-top: 36px;
+    padding: 0 18px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .storefront-cta-text > span,
+  .storefront-cta-arrow {
+    transition: none;
+  }
+}
+
+
+/* MZNJBL AC STATUS ROTATION */
+.header-center .ac-status {
+  display: inline-block;
+  position: relative;
+  height: 1.35em;
+  line-height: 1.35;
+  vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.header-center .ac-status-track {
+  display: flex;
+  flex-direction: column;
+  animation: mznjbl-ac-cycle 8s infinite;
+}
+
+.header-center .ac-status-track > span {
+  display: block;
+  flex: 0 0 1.35em;
+  height: 1.35em;
+  line-height: 1.35;
+}
+
+@keyframes mznjbl-ac-cycle {
+  0%, 42% {
+    transform: translateY(0);
+  }
+  50%, 92% {
+    transform: translateY(-1.35em);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-center .ac-status-track {
+    animation: none;
+    transform: translateY(-1.35em);
+  }
+}
+
+/* MZNJBL / Breathing status indicator */
+.hero-top .pulse {
+  display: inline-block;
+  animation: mznjbl-breathe 3.6s ease-in-out infinite !important;
+  transform-origin: center;
+  will-change: transform, opacity, box-shadow;
+}
+
+@keyframes mznjbl-breathe {
+  0%, 100% {
+    transform: scale(0.88);
+    opacity: 0.65;
+    box-shadow: 0 0 4px rgba(215,255,53,0.2);
+  }
+
+  50% {
+    transform: scale(1.18);
+    opacity: 1;
+    box-shadow:
+      0 0 12px rgba(215,255,53,0.55),
+      0 0 24px rgba(215,255,53,0.18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-top .pulse {
+    animation: none !important;
+    transform: none;
+    opacity: 1;
+  }
+}
+
