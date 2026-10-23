@@ -14,6 +14,8 @@ const files = [
   'app.js',
   'assets',
   'supply.html',
+  'dead-end.html',
+  'told-you.html',
   'projects'
 ];
 
