@@ -11,3 +11,5 @@ dist/
 styles.css.backup-before-responsive-fix
 
 .dev.vars
+*.before-*
+*.backup
