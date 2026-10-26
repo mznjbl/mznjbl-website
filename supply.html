@@ -1,336 +1,385 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0d0c">
-  <title>Corporate Supply — MZNJBL/</title>
-  <link rel="stylesheet" href="/styles.css">
-  <style>
-    .supply-page {
-      min-height: 100svh;
-      background: #0b0d0c;
-      color: #f2f3ee;
-      padding: clamp(24px, 5vw, 90px);
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-    }
-    .supply-nav, .supply-foot {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      font: 12px/1.5 monospace;
-    }
-    .supply-nav a {
-      color: #f2f3ee;
-      text-decoration: none;
-    }
-    .supply-nav strong {
-      font: 900 clamp(25px, 3vw, 42px)/1 Arial Black, sans-serif;
-    }
-    .supply-nav strong span { color: #d7ff35; }
-    .supply-content {
-      width: 100%;
-      max-width: 1200px;
-      margin: auto 0;
-    }
-    .supply-meta {
-      color: #d7ff35;
-      font: 12px/1.6 monospace;
-      margin-bottom: 32px;
-    }
-    .supply-title {
-      font-family: var(--font-head), Arial Black, sans-serif;
-      font-size: clamp(3.5rem, 10vw, 11rem);
-      line-height: .91;
-      letter-spacing: -.075em;
-      margin: 0 0 40px;
-      overflow-wrap: anywhere;
-    }
-    .supply-title span { color: #d7ff35; }
-    .supply-description {
-      font-size: clamp(18px, 2vw, 26px);
-      max-width: 720px;
-      line-height: 1.45;
-      margin-bottom: 70px;
-    }
-    .supply-notice {
-      border-top: 1px solid #586052;
-      padding-top: 30px;
-      max-width: 720px;
-    }
-    .supply-notice h2 {
-      font: 13px/1.6 monospace;
-      color: #d7ff35;
-      margin-bottom: 20px;
-    }
-    .supply-notice p {
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
-    .supply-form {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .supply-form input {
-      flex: 1 1 260px;
-      min-width: 0;
-      padding: 19px;
-      background: #1a201a;
-      color: white;
-      border: 1px solid #687367;
-      border-radius: 0;
-      font-size: 16px;
-    }
-    .supply-form button {
-      background: #d7ff35;
-      color: #0b0d0c;
-      border: 0;
-      padding: 19px 27px;
-      font: bold 13px monospace;
-      cursor: pointer;
-    }
-    .supply-form button:disabled { opacity: .6; }
-    .supply-form .trap { display: none; }
-    .supply-status { min-height: 24px; margin-top: 18px; }
-    .supply-consent { font: 12px/1.6 monospace; color: #b8c0b1; }
-    .supply-consent a { color: #d7ff35; }
-    .supply-foot { border-top: 1px solid #586052; padding-top: 20px; }
-    @media(max-width:600px) {
-      .supply-page { gap: 40px; }
-      .supply-form button { width: 100%; }
-      .supply-description { margin-bottom: 45px; }
-    }
-  </style>
-
-<style>
-/* MZNJBL / Completely unnecessary navigation */
-#dead-end-cta {
-  display: inline-flex;
-  width: fit-content;
-  max-width: 100%;
-  justify-content: space-between;
-  position: relative;
-  z-index: 2;
-  margin: 30px 0 48px;
-  align-items: center;
-  gap: 28px;
-  box-sizing: border-box;
-  max-width: 100%;
-  min-width: min(100%, 340px);
-  padding: 19px 23px;
-  margin-top: 30px;
-  border: 1px solid #d7ff35;
-  background: transparent;
-  color: #d7ff35;
-  text-decoration: none;
-  font: 600 13px/1.2 "IBM Plex Mono", monospace;
-  letter-spacing: .025em;
-  transition: background .25s ease, color .25s ease;
-}
-
-#dead-end-cta:hover,
-#dead-end-cta:focus-visible {
-  background: #d7ff35;
-  color: #0b0d0c;
-}
-
-#dead-end-cta:focus-visible {
-  outline: 2px solid #d7ff35;
-  outline-offset: 4px;
-}
-
-.dead-end-cta-copy {
-  display: grid;
-  overflow: hidden;
-  min-width: 0;
-}
-
-.dead-end-cta-copy span {
-  grid-area: 1 / 1;
-  white-space: nowrap;
-  transition:
-    transform .35s cubic-bezier(.22, 1, .36, 1),
-    opacity .25s ease;
-}
-
-.dead-end-cta-copy span:first-child {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.dead-end-cta-copy span:last-child {
-  transform: translateY(120%);
-  opacity: 0;
-}
-
-#dead-end-cta:is(:hover, :focus-visible)
-.dead-end-cta-copy span:first-child {
-  transform: translateY(-120%);
-  opacity: 0;
-}
-
-#dead-end-cta:is(:hover, :focus-visible)
-.dead-end-cta-copy span:last-child {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.dead-end-cta-arrow {
-  font-size: 24px;
-  transition: transform .25s ease;
-}
-
-#dead-end-cta:is(:hover, :focus-visible)
-.dead-end-cta-arrow {
-  transform: translate(3px, -3px);
-}
-
-@media (max-width: 480px) {
-  #dead-end-cta {
-    min-width: 0;
-    width: 100%;
-    margin: 24px 0 40px;
-    padding: 17px 14px;
-    gap: 12px;
-    font-size: 11px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #dead-end-cta,
-  #dead-end-cta * {
-    transition: none;
-  }
-}
-</style>
-
-</head>
-<body>
-  <main class="supply-page">
-    <nav class="supply-nav">
-      <a href="/" aria-label="MZNJBL home">
-        <strong>MZNJBL<span>/</span></strong>
-      </a>
-      <a href="/">BACK TO STUDIO ↗</a>
-    </nav>
-
-    <section class="supply-content">
-      <div class="supply-meta">DEPT. 004 / CORPORATE SUPPLY</div>
-
-      <h1 class="supply-title">
-        APPARENTLY,<br>
-        <span>WE SELL THINGS.</span>
-      </h1>
-
-      <p class="supply-description">
-        We sell some of our company-issued office supplies.
-      </p>
-
-<a href="/dead-end.html"
-   id="dead-end-cta"
-   class="dead-end-cta"
-   aria-label="This is a dead end">
-  <span class="dead-end-cta-copy" aria-hidden="true">
-    <span>THIS IS A DEAD END</span>
-    <span>TRUST ME IT IS</span>
-  </span>
-  <span class="dead-end-cta-arrow" aria-hidden="true">↗</span>
-</a>
-
-
-      <div class="supply-notice">
-        <h2>[SYS] UNDER CONSTRUCTION.</h2>
-
-        <p>
-          Please visit again later. Leave us your email, and we'll
-          notify you once when we start selling unnecessary stuff
-          you'd probably buy anyway.
-        </p>
-
-        <form class="supply-form" id="supplyForm">
-          <input type="email" name="email"
-                 placeholder="YOUR EMAIL ADDRESS"
-                 aria-label="Your email address"
-                 autocomplete="email" required maxlength="254">
-          <input class="trap" name="website" type="text"
-                 tabindex="-1" autocomplete="off"
-                 aria-hidden="true">
-          <button type="submit">NOTIFY ME ↗</button>
-        </form>
-
-        <p class="supply-status" id="supplyStatus"
-           role="status" aria-live="polite"></p>
-
-        <p class="supply-consent">
-          By subscribing, you agree to receive one email when
-          Corporate Supply launches. No recurring newsletter.
-          See our <a href="/privacy.html">privacy notice</a>.
-        </p>
-      </div>
-    </section>
-
-    <footer class="supply-foot">
-      <span>© MZNJBL/</span>
-      <span>[SYS] MERCHANDISE DEPARTMENT: APPARENTLY.</span>
-    </footer>
-  </main>
-
-  <script>
-    const form = document.getElementById('supplyForm');
-    const status = document.getElementById('supplyStatus');
-
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      if (!form.reportValidity()) return;
-
-      const button = form.querySelector('button');
-      button.disabled = true;
-      status.textContent = 'REGISTERING HUMAN...';
-
-      try {
-        const data = Object.fromEntries(new FormData(form).entries());
-        const response = await fetch('/api/waitlist', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(data)
-        });
-        const result = await response.json();
-
-        if (!response.ok || result.success !== true)
-          throw new Error('Unable to subscribe');
-
-        status.textContent =
-          'REGISTERED. ONE EMAIL WHEN WE LAUNCH. APPARENTLY.';
-        form.reset();
-      } catch {
-        status.textContent =
-          'REGISTRATION FAILED. PLEASE TRY AGAIN LATER.';
-      } finally {
-        button.disabled = false;
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0d0c" />
+    <title>Corporate Supply — MZNJBL/</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      .supply-page {
+        min-height: 100svh;
+        background: #0b0d0c;
+        color: #f2f3ee;
+        padding: clamp(24px, 5vw, 90px);
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
       }
-    });
-  </script>
-</body>
+      .supply-nav,
+      .supply-foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        font: 12px/1.5 monospace;
+      }
+      .supply-nav a {
+        color: #f2f3ee;
+        text-decoration: none;
+      }
+      .supply-nav strong {
+        font:
+          900 clamp(25px, 3vw, 42px) / 1 Arial Black,
+          sans-serif;
+      }
+      .supply-nav strong span {
+        color: #d7ff35;
+      }
+      .supply-content {
+        width: 100%;
+        max-width: 1200px;
+        margin: auto 0;
+      }
+      .supply-meta {
+        color: #d7ff35;
+        font: 12px/1.6 monospace;
+        margin-bottom: 32px;
+      }
+      .supply-title {
+        font-family:
+          var(--font-head),
+          Arial Black,
+          sans-serif;
+        font-size: clamp(3.5rem, 10vw, 11rem);
+        line-height: 0.91;
+        letter-spacing: -0.075em;
+        margin: 0 0 40px;
+        overflow-wrap: anywhere;
+      }
+      .supply-title span {
+        color: #d7ff35;
+      }
+      .supply-description {
+        font-size: clamp(18px, 2vw, 26px);
+        max-width: 720px;
+        line-height: 1.45;
+        margin-bottom: 70px;
+      }
+      .supply-notice {
+        border-top: 1px solid #586052;
+        padding-top: 30px;
+        max-width: 720px;
+      }
+      .supply-notice h2 {
+        font: 13px/1.6 monospace;
+        color: #d7ff35;
+        margin-bottom: 20px;
+      }
+      .supply-notice p {
+        line-height: 1.6;
+        margin-bottom: 25px;
+      }
+      .supply-form {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .supply-form input {
+        flex: 1 1 260px;
+        min-width: 0;
+        padding: 19px;
+        background: #1a201a;
+        color: white;
+        border: 1px solid #687367;
+        border-radius: 0;
+        font-size: 16px;
+      }
+      .supply-form button {
+        background: #d7ff35;
+        color: #0b0d0c;
+        border: 0;
+        padding: 19px 27px;
+        font: bold 13px monospace;
+        cursor: pointer;
+      }
+      .supply-form button:disabled {
+        opacity: 0.6;
+      }
+      .supply-form .trap {
+        display: none;
+      }
+      .supply-status {
+        min-height: 24px;
+        margin-top: 18px;
+      }
+      .supply-consent {
+        font: 12px/1.6 monospace;
+        color: #b8c0b1;
+      }
+      .supply-consent a {
+        color: #d7ff35;
+      }
+      .supply-foot {
+        border-top: 1px solid #586052;
+        padding-top: 20px;
+      }
+      @media (max-width: 600px) {
+        .supply-page {
+          gap: 40px;
+        }
+        .supply-form button {
+          width: 100%;
+        }
+        .supply-description {
+          margin-bottom: 45px;
+        }
+      }
+    </style>
+
+    <style>
+      /* MZNJBL / Completely unnecessary navigation */
+      #dead-end-cta {
+        display: inline-flex;
+        width: fit-content;
+        max-width: 100%;
+        justify-content: space-between;
+        position: relative;
+        z-index: 2;
+        margin: 30px 0 48px;
+        align-items: center;
+        gap: 28px;
+        box-sizing: border-box;
+        max-width: 100%;
+        min-width: min(100%, 340px);
+        padding: 19px 23px;
+        margin-top: 30px;
+        border: 1px solid #d7ff35;
+        background: transparent;
+        color: #d7ff35;
+        text-decoration: none;
+        font:
+          600 13px/1.2 "IBM Plex Mono",
+          monospace;
+        letter-spacing: 0.025em;
+        transition:
+          background 0.25s ease,
+          color 0.25s ease;
+      }
+
+      #dead-end-cta:hover,
+      #dead-end-cta:focus-visible {
+        background: #d7ff35;
+        color: #0b0d0c;
+      }
+
+      #dead-end-cta:focus-visible {
+        outline: 2px solid #d7ff35;
+        outline-offset: 4px;
+      }
+
+      .dead-end-cta-copy {
+        display: grid;
+        overflow: hidden;
+        min-width: 0;
+      }
+
+      .dead-end-cta-copy span {
+        grid-area: 1 / 1;
+        white-space: nowrap;
+        transition:
+          transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.25s ease;
+      }
+
+      .dead-end-cta-copy span:first-child {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .dead-end-cta-copy span:last-child {
+        transform: translateY(120%);
+        opacity: 0;
+      }
+
+      #dead-end-cta:is(:hover, :focus-visible)
+        .dead-end-cta-copy
+        span:first-child {
+        transform: translateY(-120%);
+        opacity: 0;
+      }
+
+      #dead-end-cta:is(:hover, :focus-visible)
+        .dead-end-cta-copy
+        span:last-child {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .dead-end-cta-arrow {
+        font-size: 24px;
+        transition: transform 0.25s ease;
+      }
+
+      #dead-end-cta:is(:hover, :focus-visible) .dead-end-cta-arrow {
+        transform: translate(3px, -3px);
+      }
+
+      @media (max-width: 480px) {
+        #dead-end-cta {
+          min-width: 0;
+          width: 100%;
+          margin: 24px 0 40px;
+          padding: 17px 14px;
+          gap: 12px;
+          font-size: 11px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #dead-end-cta,
+        #dead-end-cta * {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="supply-page">
+      <nav class="supply-nav">
+        <a href="/" aria-label="MZNJBL home">
+          <strong>MZNJBL<span>/</span></strong>
+        </a>
+        <a href="/">BACK TO STUDIO ↗</a>
+      </nav>
+
+      <section class="supply-content">
+        <div class="supply-meta">DEPT. 004 / CORPORATE SUPPLY</div>
+
+        <h1 class="supply-title">
+          APPARENTLY,<br />
+          <span>WE SELL THINGS.</span>
+        </h1>
+
+        <p class="supply-description">
+          We sell some of our company-issued office supplies.
+        </p>
+
+        <a
+          href="/dead-end.html"
+          id="dead-end-cta"
+          class="dead-end-cta"
+          aria-label="This is a dead end"
+        >
+          <span class="dead-end-cta-copy" aria-hidden="true">
+            <span>THIS IS A DEAD END</span>
+            <span>TRUST ME IT IS</span>
+          </span>
+          <span class="dead-end-cta-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <div class="supply-notice">
+          <h2>[SYS] UNDER CONSTRUCTION.</h2>
+
+          <p>
+            Please visit again later. Leave us your email, and we'll notify you
+            once when we start selling unnecessary stuff you'd probably buy
+            anyway.
+          </p>
+
+          <form class="supply-form" id="supplyForm">
+            <input
+              type="email"
+              name="email"
+              placeholder="YOUR EMAIL ADDRESS"
+              aria-label="Your email address"
+              autocomplete="email"
+              required
+              maxlength="254"
+            />
+            <input
+              class="trap"
+              name="website"
+              type="text"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+            <button type="submit">NOTIFY ME ↗</button>
+          </form>
+
+          <p
+            class="supply-status"
+            id="supplyStatus"
+            role="status"
+            aria-live="polite"
+          ></p>
+
+          <p class="supply-consent">
+            By subscribing, you agree to receive one email when Corporate Supply
+            launches. No recurring newsletter. See our
+            <a href="/privacy.html">privacy notice</a>.
+          </p>
+        </div>
+      </section>
+
+      <footer class="supply-foot">
+        <span>© MZNJBL/</span>
+        <span>[SYS] MERCHANDISE DEPARTMENT: APPARENTLY.</span>
+      </footer>
+    </main>
+
+    <script>
+      const form = document.getElementById("supplyForm");
+      const status = document.getElementById("supplyStatus");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+
+        const button = form.querySelector("button");
+        button.disabled = true;
+        status.textContent = "REGISTERING HUMAN...";
+
+        try {
+          const data = Object.fromEntries(new FormData(form).entries());
+          const response = await fetch("/api/waitlist", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          const result = await response.json();
+
+          if (!response.ok || result.success !== true)
+            throw new Error("Unable to subscribe");
+
+          status.textContent =
+            "REGISTERED. ONE EMAIL WHEN WE LAUNCH. APPARENTLY.";
+          form.reset();
+        } catch {
+          status.textContent = "REGISTRATION FAILED. PLEASE TRY AGAIN LATER.";
+        } finally {
+          button.disabled = false;
+        }
+      });
+    </script>
+  </body>
 </html>
 <style>
-@media (max-width: 600px) {
-  .supply-title {
-    font-size: clamp(2.5rem, 9.2vw, 4.5rem);
-    letter-spacing: -0.075em;
-    overflow-wrap: normal;
-    word-break: normal;
+  @media (max-width: 600px) {
+    .supply-title {
+      font-size: clamp(2.5rem, 9.2vw, 4.5rem);
+      letter-spacing: -0.075em;
+      overflow-wrap: normal;
+      word-break: normal;
+    }
   }
-}
 </style>
 <style>
-.supply-nav strong {
-  font-family: "Archivo Black", sans-serif;
-  font-weight: 900;
-  letter-spacing: -0.09em;
-}
+  .supply-nav strong {
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.09em;
+  }
 </style>
