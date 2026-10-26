@@ -256,7 +256,7 @@
             DEVELOPMENT IS MANDATORY.
           </p>
           <a
-            class="tiny-label"
+            class="tiny-label resume-download-btn"
             href="/assets/Mohamizan_Jubli_Resume_Public.pdf"
             download="Mohamizan_Jubli_Resume_Public.pdf"
             >DOWNLOAD PROFESSIONAL RÉSUMÉ (PDF)
@@ -298,7 +298,10 @@
         aria-label="Verified work and education timeline with studio project"
         class="archive-timeline"
       >
-        <article class="archive-entry" data-category="personal">
+        <article
+          class="archive-entry origin-birth-entry"
+          data-category="personal"
+        >
           <div class="archive-date">UNDISCLOSED</div>
           <div class="archive-body">
             <div class="archive-category">
@@ -310,35 +313,30 @@
             >
               HUMAN INSTANCE CREATED.
             </h2>
-            <p
-              data-playful="Born. Species: Homo sapiens. Variant: Male. Status: Alive, apparently."
-              data-professional="Birth date undisclosed."
-            >
-              Born. Species: Homo sapiens. Variant: Male. Status: Alive,
-              apparently.
-            </p>
-            <p
-              data-playful="The beginning of me. Nothing particularly interesting to report. No achievements, no responsibilities, just existing."
-              data-professional="Personal timeline begins."
-            >
-              The beginning of me. Nothing particularly interesting to report.
-              No achievements, no responsibilities, just existing.
-            </p>
-            <p
-              data-playful="Spent most of my time crying and sleeping. What an annoying baby. Tch."
-              data-professional="Early childhood."
-            >
-              Spent most of my time crying and sleeping. What an annoying baby.
-              Tch.
-            </p>
-            <p
-              data-playful="Should&#x27;ve been buying land during this time instead. Terrible financial decision on my part. Zero income, zero investments, and absolutely no contribution to society."
-              data-professional="Additional biographical information withheld."
-            >
-              Should&#x27;ve been buying land during this time instead. Terrible
-              financial decision on my part. Zero income, zero investments, and
-              absolutely no contribution to society.
-            </p>
+            <div class="birth-story-copy">
+              <p class="birth-story-facts">
+                Location: Kuching, Sarawak.<br />
+                Species: Homo sapiens.<br />
+                Variant: Male.<br />
+                Status: Alive, apparently.
+              </p>
+
+              <p>
+                The beginning of me. Nothing particularly interesting to report.
+                No achievements, no responsibilities, just existing.
+              </p>
+
+              <p>
+                Spent most of my time crying and sleeping. What an annoying
+                baby. Tch.<br />
+                Should've been buying land during this time instead.
+              </p>
+
+              <p>
+                Terrible financial decision on my part. Zero income, zero
+                investments, and absolutely no contribution to society.
+              </p>
+            </div>
             <p
               class="personnel-syslog"
               data-playful="[SYS] INITIAL BOOT: SUCCESSFUL | [SYS] PRIMARY FUNCTIONS: CRY / SLEEP / REPEAT | [SYS] FINANCIAL FORESIGHT: NOT INSTALLED"
@@ -719,7 +717,6 @@
               CYBERSECURITY ARC.
             </h2>
             <p
-              class="cybersecurity-description"
               data-playful="AI can write code, generate entire websites, and apparently find its way into systems where it absolutely wasn&#x27;t invited. Wonderful. Very reassuring.
 
 Meanwhile, I&#x27;m standing here with an Electrical &amp; Electronic Engineering diploma, wondering whether that&#x27;s enough to negotiate with our future machine overlords.
@@ -728,6 +725,8 @@ So I enrolled in a Bachelor of Cybersecurity at Swinburne University of Technolo
 
 If the machines take over, please note that I was trying to help."
               data-professional="Currently pursuing a Bachelor of Cybersecurity at Swinburne University of Technology Sarawak (2026–present)."
+              data-story-paragraphs="true"
+              style="white-space: pre-line"
             >
               AI can write code, generate entire websites, and apparently find
               its way into systems where it absolutely wasn't invited.
@@ -756,25 +755,20 @@ If the machines take over, please note that I was trying to help."
               EVERYTHING I LEARNED. NOW RUNNING IN PRODUCTION.
             </h2>
             <p
-              class="studio-story"
               data-playful="Years of retail shifts, stock discrepancies, customer complaints, technical assignments, and wondering what series of unfortunate decisions led me here.
 
-Somewhere between counting missing inventory, explaining the obvious for the seventeenth time, and questioning whether my diploma came with a complimentary existential crisis, I had a brilliant idea.
-
-What if I took all that suffering and turned it into a business?
-
-And so, MZNJBL/ was born. A digital studio founded on questionable life decisions, an unreasonable amount of caffeine, and the belief that I could probably build something useful before completely losing my mind.
+Somewhere between counting missing inventory, explaining the obvious for the seventeenth time, and questioning whether my diploma came with a complimentary existential crisis, I had a brilliant idea. What if I took all that suffering and turned it into a business? And so, MZNJBL/ was born. A digital studio founded on questionable life decisions, an unreasonable amount of caffeine, and the belief that I could probably build something useful before completely losing my mind.
 
 Now I design and develop websites for people who have businesses to run and absolutely no reason to suffer through another website that looks like it was last updated during the reign of Internet Explorer.
 
-Am I qualified to run a studio? The website works, doesn&#x27;t it?
-
-Anyway, welcome to MZNJBL/. Apparently, we&#x27;re a business now.
+Am I qualified to run a studio? The website works, doesn&#x27;t it? Anyway, welcome to MZNJBL/. Apparently, we&#x27;re a business now.
 
 P/S: Only God knows how many cups of coffee I&#x27;ve consumed. Apparently, my heart has started filing formal complaints. My watch suggested AFib. My doctor was considerably less impressed.
-
 F*** AFib."
               data-professional="MZNJBL/ is a self-initiated creative web-development studio project bringing together customer-facing work experience, technical education, and practical design thinking. This website demonstrates responsive interface design, accessible interactions, and frontend development."
+              style="white-space: pre-line !important"
+              data-story-paragraphs="true"
+              style="white-space: pre-line"
             >
               Years of retail shifts, stock discrepancies, customer complaints,
               technical assignments, and wondering what series of unfortunate
@@ -858,5 +852,103 @@ F*** AFib."
       </div>
       <p class="footer-joke">JUSTIFIED. UNCONVENTIONAL. BUILT. LAUNCHED.</p>
     </footer>
+
+    <script>
+      /* MZNJBL TIMELINE REAL PARAGRAPHS */
+      (() => {
+        const definitions = [
+          {
+            prefix: "AI can write code",
+            starts: [
+              "Meanwhile, I'm standing here",
+              "So I enrolled in a Bachelor",
+              "If the machines take over",
+            ],
+          },
+          {
+            prefix: "Years of retail shifts",
+            starts: [
+              "Somewhere between counting",
+              "Now I design and develop",
+              "Am I qualified to run a studio?",
+              "P/S: Only God knows",
+              "F*** AFib.",
+            ],
+          },
+        ];
+
+        definitions.forEach(({ prefix, starts }) => {
+          const element = [
+            ...document.querySelectorAll(
+              ".archive-entry p[data-playful][data-professional]",
+            ),
+          ].find((p) => p.dataset.playful.startsWith(prefix));
+
+          if (!element) return;
+
+          function render() {
+            // The site's existing mode switch replaces the children
+            // with text. Detect that and rebuild the paragraphs.
+            if (
+              element.children.length > 0 &&
+              element.firstElementChild?.classList.contains(
+                "mzn-story-paragraph",
+              )
+            )
+              return;
+
+            const current = element.textContent.trim();
+
+            // Professional mode stays as its original single paragraph.
+            if (current === element.dataset.professional) return;
+
+            // Only change the two known playful descriptions.
+            if (!current.startsWith(prefix)) return;
+
+            // Normalise whitespace, then split at the actual
+            // paragraph boundaries, not at HTML newlines.
+            let text = element.dataset.playful.replace(/\s+/g, " ").trim();
+
+            for (const start of starts) {
+              text = text.replace(start, "\n\n" + start);
+            }
+
+            const paragraphs = text
+              .split(/\n\n+/)
+              .map((value) => value.trim())
+              .filter(Boolean);
+
+            const fragment = document.createDocumentFragment();
+
+            paragraphs.forEach((value, index) => {
+              const span = document.createElement("span");
+
+              span.className = "mzn-story-paragraph";
+              span.textContent = value;
+
+              span.style.display = "block";
+              span.style.margin = "0";
+              span.style.padding = "0";
+
+              if (index !== paragraphs.length - 1) {
+                span.style.marginBottom = "1.4em";
+              }
+
+              fragment.appendChild(span);
+            });
+
+            element.replaceChildren(fragment);
+          }
+
+          const observer = new MutationObserver(render);
+
+          observer.observe(element, {
+            childList: true,
+          });
+
+          render();
+        });
+      })();
+    </script>
   </body>
 </html>

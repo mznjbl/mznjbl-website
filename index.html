@@ -1143,6 +1143,295 @@
               Your business deserves more than a website that looks like it
               survived three decades and Internet Explorer. We can fix that.
             </div>
+
+            <div id="business-preview-demo" class="business-preview-demo">
+              <div class="bpd-meta">
+                <span>[SYS] INTERACTIVE SERVICE PREVIEW</span>
+                <span>DEMO_002 / BUSINESS WEBSITE</span>
+              </div>
+
+              <div class="bpd-browser">
+                <div class="bpd-chrome">
+                  <span>BUSINESS WEBSITE / FUNCTIONAL DEMO</span>
+                  <span>LOCAL PREVIEW</span>
+                </div>
+
+                <div class="bpd-site">
+                  <div class="bpd-header">
+                    <div class="bpd-logo">NORTHLINE<span>/</span></div>
+                    <div class="bpd-header-label">
+                      PROPERTY SERVICES / CONCEPT
+                    </div>
+                  </div>
+
+                  <nav
+                    class="bpd-nav"
+                    aria-label="Demo business website navigation"
+                  >
+                    <button
+                      type="button"
+                      data-bpd-page="home"
+                      aria-pressed="true"
+                    >
+                      HOME
+                    </button>
+                    <button
+                      type="button"
+                      data-bpd-page="about"
+                      aria-pressed="false"
+                    >
+                      ABOUT
+                    </button>
+                    <button
+                      type="button"
+                      data-bpd-page="services"
+                      aria-pressed="false"
+                    >
+                      SERVICES
+                    </button>
+                    <button
+                      type="button"
+                      data-bpd-page="contact"
+                      aria-pressed="false"
+                    >
+                      CONTACT
+                    </button>
+                  </nav>
+
+                  <div class="bpd-body" aria-live="polite">
+                    <div class="bpd-kicker" id="bpd-kicker">
+                      NORTHLINE / PROPERTY SERVICES
+                    </div>
+
+                    <h3 id="bpd-title">GOOD WORK.<br />NO SHORTCUTS.</h3>
+
+                    <p id="bpd-description">
+                      Reliable property maintenance for spaces worth looking
+                      after.
+                    </p>
+
+                    <div class="bpd-bottom">
+                      <button type="button" class="bpd-primary" id="bpd-action">
+                        EXPLORE SERVICES <span aria-hidden="true">↗</span>
+                      </button>
+
+                      <span class="bpd-stat" id="bpd-stat">
+                        RESIDENTIAL + COMMERCIAL
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="bpd-dashboard-launch">
+                    <button
+                      type="button"
+                      id="bpd-dashboard-toggle"
+                      aria-expanded="false"
+                      aria-controls="bpd-dashboard"
+                    >
+                      <span>VIEW BUSINESS DASHBOARD</span>
+                      <span aria-hidden="true">↗</span>
+                    </button>
+                  </div>
+
+                  <section
+                    id="bpd-dashboard"
+                    class="bpd-dashboard"
+                    hidden
+                    aria-label="Simulated business analytics"
+                  >
+                    <div class="bpd-dash-heading">
+                      <div>
+                        <span class="bpd-dash-eyebrow"
+                          >NORTHLINE/ BACK OFFICE</span
+                        >
+                        <h4>BUSINESS OVERVIEW.</h4>
+                      </div>
+                      <span class="bpd-dash-label">SIMULATED DATA</span>
+                    </div>
+
+                    <div
+                      class="bpd-period"
+                      role="group"
+                      aria-label="Choose reporting month"
+                    >
+                      <button
+                        type="button"
+                        data-bpd-month="0"
+                        aria-pressed="false"
+                      >
+                        JAN
+                      </button>
+                      <button
+                        type="button"
+                        data-bpd-month="1"
+                        aria-pressed="false"
+                      >
+                        FEB
+                      </button>
+                      <button
+                        type="button"
+                        data-bpd-month="2"
+                        aria-pressed="true"
+                      >
+                        MAR
+                      </button>
+                    </div>
+
+                    <div class="bpd-kpis">
+                      <div>
+                        <span>MONTHLY REVENUE</span>
+                        <strong id="bpd-revenue">RM27,000</strong>
+                      </div>
+                      <div>
+                        <span>JOBS COMPLETED</span>
+                        <strong id="bpd-jobs">61</strong>
+                      </div>
+                      <div>
+                        <span>REPEAT CUSTOMERS</span>
+                        <strong id="bpd-repeat">71%</strong>
+                      </div>
+                    </div>
+
+                    <div class="bpd-chart-layout">
+                      <div>
+                        <div class="bpd-chart-title">REVENUE BY SERVICE</div>
+                        <div
+                          id="bpd-donut"
+                          class="bpd-donut"
+                          role="img"
+                          aria-label="Service revenue breakdown for March"
+                        >
+                          <div class="bpd-donut-center">
+                            <strong id="bpd-donut-total">27K</strong>
+                            <span>RM SALES</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="bpd-legend" id="bpd-legend">
+                        <div><span>REPAIRS</span><strong>45.9%</strong></div>
+                        <div>
+                          <span>MAINTENANCE</span><strong>35.6%</strong>
+                        </div>
+                        <div>
+                          <span>INSPECTIONS</span><strong>18.5%</strong>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="bpd-dash-disclaimer">
+                      DEMONSTRATION ONLY. NO REAL BUSINESS DATA OR TRANSACTIONS.
+                    </div>
+                  </section>
+                  <div class="bpd-footer">
+                    <span>DEMONSTRATION BUSINESS / NOT A REAL CLIENT</span>
+                    <span id="bpd-location">VIEW / HOME</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bpd-note">
+                <span>FOUR WORKING VIEWS / ONE SELF-CONTAINED PREVIEW</span>
+                <span>NO EXTERNAL NAVIGATION</span>
+              </div>
+            </div>
+
+            <script>
+              (() => {
+                const root = document.getElementById("business-preview-demo");
+                if (!root || root.dataset.ready === "true") return;
+                root.dataset.ready = "true";
+
+                const pages = {
+                  home: {
+                    kicker: "NORTHLINE / PROPERTY SERVICES",
+                    title: "GOOD WORK.<br>NO SHORTCUTS.",
+                    description:
+                      "Reliable property maintenance for spaces worth looking after.",
+                    stat: "RESIDENTIAL + COMMERCIAL",
+                    action: "EXPLORE SERVICES",
+                    next: "services",
+                  },
+
+                  about: {
+                    kicker: "ABOUT THE BUSINESS",
+                    title: "BUILT ON<br>SHOWING UP.",
+                    description:
+                      "A locally focused maintenance team that believes clear communication is part of the job.",
+                    stat: "PEOPLE FIRST. ALWAYS.",
+                    action: "OUR SERVICES",
+                    next: "services",
+                  },
+
+                  services: {
+                    kicker: "OUR SERVICES",
+                    title: "WE HANDLE<br>THE DETAILS.",
+                    description:
+                      "Repairs, routine maintenance and property care, organised around your needs.",
+                    stat: "REPAIRS / CARE / MAINTENANCE",
+                    action: "REQUEST AN ENQUIRY",
+                    next: "contact",
+                  },
+
+                  contact: {
+                    kicker: "GET IN TOUCH",
+                    title: "LET'S GET<br>IT SORTED.",
+                    description:
+                      "Tell us what needs attention. This is a fictional demonstration, so no enquiry will actually be sent.",
+                    stat: "NO MESSAGE WILL BE SENT",
+                    action: "BACK TO HOME",
+                    next: "home",
+                  },
+                };
+
+                const title = root.querySelector("#bpd-title");
+                const kicker = root.querySelector("#bpd-kicker");
+                const description = root.querySelector("#bpd-description");
+                const stat = root.querySelector("#bpd-stat");
+                const action = root.querySelector("#bpd-action");
+                const location = root.querySelector("#bpd-location");
+                const buttons = root.querySelectorAll("[data-bpd-page]");
+
+                let activePage = "home";
+
+                function navigate(page) {
+                  const content = pages[page];
+                  if (!content) return;
+
+                  activePage = page;
+                  kicker.textContent = content.kicker;
+                  title.innerHTML = content.title;
+                  description.textContent = content.description;
+                  stat.textContent = content.stat;
+
+                  action.replaceChildren(
+                    document.createTextNode(content.action + " "),
+                    Object.assign(document.createElement("span"), {
+                      textContent: "↗",
+                    }),
+                  );
+
+                  location.textContent = "VIEW / " + page.toUpperCase();
+
+                  buttons.forEach((button) => {
+                    button.setAttribute(
+                      "aria-pressed",
+                      String(button.dataset.bpdPage === page),
+                    );
+                  });
+                }
+
+                buttons.forEach((button) => {
+                  button.addEventListener("click", () => {
+                    navigate(button.dataset.bpdPage);
+                  });
+                });
+
+                action.addEventListener("click", () => {
+                  navigate(pages[activePage].next);
+                });
+              })();
+            </script>
           </details>
           <details>
             <summary>
@@ -1214,6 +1503,7 @@
           </div>
         </div>
       </section>
+
       <section class="process section section-pad" id="process">
         <div class="section-meta">
           <span>06 / THE PROCESS</span>
@@ -1226,31 +1516,56 @@
           </div>
         </div>
         <h2 class="display-title reveal">
-          NO MAGIC.<br /><span class="outline-text">JUST METHOD.</span>
+          THE WEBSITE<br /><span class="outline-text"
+            >DOES NOT BUILD ITSELF.</span
+          >
         </h2>
         <div class="process-grid">
           <div>
-            <span>01 / DISCOVER</span>
-            <h3>ASK THE RIGHT QUESTIONS.</h3>
-            <p>Understand the audience, objectives, and constraints.</p>
+            <span>01 / THE PROBLEM</span>
+            <h3>YOU TELL US THE PROBLEM.</h3>
+            <p>
+              What is this site supposed to do? Sell something? Introduce a
+              brand? Convince strangers to trust you? Good. We start there
+              instead of pretending the font choice came first.
+            </p>
           </div>
           <div>
-            <span>02 / DESIGN</span>
-            <h3>MAKE IT MAKE SENSE.</h3>
-            <p>Set visual direction, structure, and interactions.</p>
+            <span>02 / THE RUBBISH</span>
+            <h3>WE REMOVE THE RUBBISH.</h3>
+            <p>
+              Every project begins with too many ideas and at least one bad one.
+              We keep what helps, throw out what doesn't, and stop the layout
+              from becoming a crime scene.
+            </p>
           </div>
           <div>
-            <span>03 / DEVELOP</span>
-            <h3>BUILD THE REAL THING.</h3>
-            <p>Responsive frontend, functional details, and testing.</p>
+            <span>03 / BUILD</span>
+            <h3>WE BUILD SOMETHING THAT ACTUALLY WORKS.</h3>
+            <p>
+              Responsive pages, real interactions, proper structure, and enough
+              testing to make sure the website doesn't collapse the moment
+              someone opens it on their phone. Did your previous developer hand
+              you unfinished, AI-generated code and call it a day? Or, even
+              better, send you a localhost link as the finished product?
+              Congratulations. Your website exists exclusively on their
+              computer. Inconvenient. Hilarious, actually. We can fix that.
+            </p>
           </div>
           <div>
-            <span>04 / LAUNCH</span>
-            <h3>PRESS THE BIG BUTTON.</h3>
-            <p>Review, deploy, and hand over the finished website.</p>
+            <span>04 / RELEASE</span>
+            <h3>WE LAUNCH IT INTO SOCIETY.</h3>
+            <p>
+              Review, test, fix what needs fixing, and deploy the website
+              somewhere people can actually access it. No dramatic unveiling. No
+              sacred rituals. Just a website that does its job. And yes, we
+              provide an actual working URL. Apparently, that needs to be
+              specified now.
+            </p>
           </div>
         </div>
       </section>
+
       <section class="contact section section-pad" id="contact">
         <div class="section-meta dark-meta">
           <span>07 / CONTACT PROTOCOL</span><span>OPEN FOR INQUIRIES</span>
@@ -1486,5 +1801,133 @@
       </div>
       <p class="footer-joke">[SYS] BRANDING DECISION: SOMEHOW APPROVED</p>
     </footer>
+
+    <script>
+      /* BUSINESS ANALYTICS DEMO 002 */
+      (() => {
+        const root = document.getElementById("business-preview-demo");
+        if (!root) return;
+
+        const dashboard = root.querySelector("#bpd-dashboard");
+        const toggle = root.querySelector("#bpd-dashboard-toggle");
+        const donut = root.querySelector("#bpd-donut");
+        const legend = root.querySelector("#bpd-legend");
+
+        if (!dashboard || !toggle || !donut || !legend) return;
+
+        const months = [
+          { name: "January", values: [8400, 6200, 3400], jobs: 42, repeat: 63 },
+          {
+            name: "February",
+            values: [10200, 7800, 4000],
+            jobs: 51,
+            repeat: 67,
+          },
+          { name: "March", values: [12400, 9600, 5000], jobs: 61, repeat: 71 },
+        ];
+
+        const categories = [
+          { name: "REPAIRS", color: "#b8d89a" },
+          { name: "MAINTENANCE", color: "#71886f" },
+          { name: "INSPECTIONS", color: "#3f554c" },
+        ];
+
+        const money = (value) => "RM" + value.toLocaleString("en-MY");
+
+        function renderMonth(index) {
+          const data = months[index];
+          if (!data) return;
+
+          const total = data.values.reduce((a, b) => a + b, 0);
+
+          root.querySelector("#bpd-revenue").textContent = money(total);
+          root.querySelector("#bpd-jobs").textContent = data.jobs;
+          root.querySelector("#bpd-repeat").textContent = data.repeat + "%";
+
+          root.querySelector("#bpd-donut-total").textContent =
+            (total / 1000).toFixed(0) + "K";
+
+          let start = 0;
+          const segments = data.values.map((value, i) => {
+            const end = start + (value / total) * 100;
+            const segment =
+              categories[i].color +
+              " " +
+              start.toFixed(3) +
+              "% " +
+              end.toFixed(3) +
+              "%";
+            start = end;
+            return segment;
+          });
+
+          donut.style.background =
+            "conic-gradient(" + segments.join(", ") + ")";
+
+          donut.setAttribute(
+            "aria-label",
+            data.name +
+              ": " +
+              categories
+                .map(
+                  (c, i) =>
+                    c.name +
+                    " " +
+                    ((data.values[i] / total) * 100).toFixed(1) +
+                    "%",
+                )
+                .join(", "),
+          );
+
+          legend.replaceChildren();
+
+          categories.forEach((category, i) => {
+            const row = document.createElement("div");
+            const label = document.createElement("span");
+            const swatch = document.createElement("i");
+            const text = document.createElement("span");
+            const percentage = document.createElement("strong");
+
+            swatch.style.background = category.color;
+            text.textContent = category.name;
+
+            label.append(swatch, text);
+
+            percentage.textContent =
+              ((data.values[i] / total) * 100).toFixed(1) + "%";
+
+            row.append(label, percentage);
+            legend.append(row);
+          });
+
+          root.querySelectorAll("[data-bpd-month]").forEach((button) => {
+            button.setAttribute(
+              "aria-pressed",
+              String(Number(button.dataset.bpdMonth) === index),
+            );
+          });
+        }
+
+        toggle.addEventListener("click", () => {
+          const opening = dashboard.hidden;
+          dashboard.hidden = !opening;
+          toggle.setAttribute("aria-expanded", String(opening));
+
+          toggle.querySelector("span:first-child").textContent = opening
+            ? "CLOSE BUSINESS DASHBOARD"
+            : "VIEW BUSINESS DASHBOARD";
+
+          if (opening) renderMonth(2);
+        });
+
+        root.querySelectorAll("[data-bpd-month]").forEach((button) => {
+          button.addEventListener("click", () => {
+            renderMonth(Number(button.dataset.bpdMonth));
+          });
+        });
+
+        renderMonth(2);
+      })();
+    </script>
   </body>
 </html>
